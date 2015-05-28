@@ -9,12 +9,15 @@ describe('Leetcode191', function(){
       assert.equal(false, leetcode191.hammingWeight(-10));
       assert.equal(false, leetcode191.hammingWeight(-1));
     })
-	it('should equal 3: 7, 11, 22', function(){
+    it('should equal 3: 7, 11, 22', function(){
       assert.equal(3, leetcode191.hammingWeight(7));
       assert.equal(3, leetcode191.hammingWeight(11));
       assert.equal(3, leetcode191.hammingWeight(22));
     })
-
+    it('should equal 1: 2147483648, 2', function(){
+      assert.equal(1, leetcode191.hammingWeight(2147483648));
+      assert.equal(1, leetcode191.hammingWeight(2));
+    })
   })
  
 })

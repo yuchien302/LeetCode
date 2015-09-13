@@ -23,7 +23,7 @@ class Solution(object):
         if p.val > q.val:
             p, q = q, p
 
-        if (p.val < root.val) and (root.val < q.val):
+        if p.val <= root.val <= q.val:
             return root
 
         if (p is root) or (q is root):

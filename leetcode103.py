@@ -21,7 +21,7 @@ class Solution(object):
         results = []
         while len(d) > 0:
             layer = []
-            for i in range(len(d)):
+            for _ in range(len(d)):
                 node = d.popleft()
                 layer.append(node.val)
                 if node.left:

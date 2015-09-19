@@ -28,7 +28,7 @@ class Test(unittest.TestCase):
         partitions = self.solution.partition("aab")
         self.assertEqual(partitions, [["aa","b"],["a","a","b"]])
 
-    def test_0(self):
+    def test_1(self):
         partitions = self.solution.partition("aa")
         self.assertEqual(partitions, [["aa"],["a","a"]])
 

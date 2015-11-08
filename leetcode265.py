@@ -7,18 +7,18 @@ class Solution(object):
         if len(costs) == 0 or len(costs[0]) == 0:
             return 0
             
-        colors = len(costs[0])
-        
-        
         for r in range(1, len(costs)):
+            sorted_costs = sorted(costs[r-1])
+            
+            min_cost0 = sorted_costs[0]
+            min_cost1 = sorted_costs[1]
+            min_idx0 = costs[r-1].index(min_cost0)
+
             for k in range(len(costs[0])):
-                mincost = 1000000000
-                for k_next in range(len(costs[0])):
-                    if k == k_next:
-                        continue
-                    else:
-                        mincost = min(mincost, costs[r-1][k_next])
-                        
-                costs[r][k] += mincost
-        print(costs)
+
+                if k == min_idx0:
+                    costs[r][k] += min_cost1
+                else:
+                    costs[r][k] += min_cost0
+
         return min(costs[-1])        

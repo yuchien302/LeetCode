@@ -1,38 +1,42 @@
 class Solution(object):
-    def spiralOrder(self, matrix):
+    def generateMatrix(self, n):
         """
-        :type matrix: List[List[int]]
-        :rtype: List[int]
+        :type n: int
+        :rtype: List[List[int]]
         """
-        if len(matrix) == 0:
-            return []
-        row = len(matrix)
-        col = len(matrix[0])
-
-        colLeft = rowTop = 0
-        colRight = col - 1
-        rowBottom = row - 1
-        n = row * col
-        res = []
-        while rowTop <= rowBottom and colLeft <= colRight:
-
-            for c in range( colLeft, colRight+1 ):
-                res.append(matrix[rowTop][c])
+        if n == 1:
+            return [[1]]
+        mat = [[0 for _ in range(n)] for _ in range(n)]
+        colLeft, colRight = 0, n-1
+        rowTop, rowBottom = 0, n-1
+        count = 1
+        while count <= n*n:
+            for i in range(colLeft, colRight+1):
+                # print(rowTop, i, count)
+                mat[rowTop][i] = count
+                count += 1
             rowTop += 1
-            
-            for r in range( rowTop, rowBottom+1 ):
-                res.append(matrix[r][colRight])
+
+            if count > n*n: break
+            for i in range(rowTop, rowBottom+1):
+                # print(i, colRight, count)
+                mat[i][colRight] = count
+                count += 1
             colRight -= 1
-            
-            if rowTop <= rowBottom:
-                for c in range( colRight, colLeft-1, -1 ):
-                    res.append(matrix[rowBottom][c])
-                rowBottom -= 1
-                
-            if colLeft <= colRight:
-                for r in range( rowBottom, rowTop-1, -1 ):
-                    res.append(matrix[r][colLeft])
-                colLeft += 1            
-            
-        return res
-            
+
+            if count > n*n: break
+            for i in range(colRight, colLeft-1, -1):
+                # print(rowBottom, i, count)
+                mat[rowBottom][i] = count
+                count += 1
+            rowBottom -= 1
+
+
+            if count > n*n: break
+            for i in range(rowBottom, rowTop-1, -1):
+                # print(i, colLeft, count)
+                mat[i][colLeft] = count
+                count += 1
+            colLeft += 1
+
+        return mat
